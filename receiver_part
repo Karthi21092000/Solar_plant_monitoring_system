@@ -1,3 +1,9 @@
+#include <SPI.h>
+ #include <nRF24L01.h>
+ #include <RF24.h>
+ #define CE_PIN 9
+ #define CSN_PIN 10
+ #define LDR_PIN 0
 const uint64_t pipe = 0xE8E8F0F0E1LL;
 RF24 radio(CE_PIN, CSN_PIN);
 byte data[6]; // depending on the number of sensors used
