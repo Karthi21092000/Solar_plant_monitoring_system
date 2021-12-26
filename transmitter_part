@@ -1,0 +1,26 @@
+//Transmitter side
+#include <SPI.h>
+#include <nRF24L01.h>
+#include <RF24.h>
+#define CE_PIN 9 
+#define CSN_PIN 10 
+const uint64_t pipe = 0xE8E8F0F0E1LL;
+RF24 radio(CE_PIN, CSN_PIN);
+byte data[6];
+void setup()
+ {
+ Serial.begin(9600);
+ radio.begin();
+ radio.openWritingPipe(pipe);
+ }
+ void loop()
+ {
+
+data[0] = analogRead(A0);
+data[1]=analogRead(A1);
+data[2]=analogRead(A5);
+
+
+radio.write( data, sizeof(data) );
+
+ }
